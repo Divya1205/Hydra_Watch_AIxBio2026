@@ -15,7 +15,7 @@ from sklearn.preprocessing import StandardScaler
 PROJECT_ROOT = Path(os.environ.get("HYDRAWATCH_ROOT", "."))
 
 EMBED_DIR = PROJECT_ROOT / "casper_data/ny_hospital_d/embeddings/25k/embeddings_combined"
-RESULTS_DIR = PROJECT_ROOT / "results_tgvae"
+RESULTS_DIR = PROJECT_ROOT / "results_tevae"
 AE_SCORES = PROJECT_ROOT / "results_ae/ae_scores.tsv"
 MAHAL_SCORES = PROJECT_ROOT / "results_v3/all_unclassified_scores.tsv"
 
@@ -61,8 +61,8 @@ class TransformerBlock(layers.Layer):
         return self.norm2(x + f)
 
 
-def build_tgvae(input_dim):
-    class TGVAE(Model):
+def build_tevae(input_dim):
+    class TE-VAE(Model):
         def __init__(self, input_dim, **kwargs):
             super().__init__(**kwargs)
             self.input_proj = layers.Dense(HIDDEN_DIM, activation="relu")
@@ -136,7 +136,7 @@ def build_tgvae(input_dim):
                 mus.append(mu.numpy())
             return np.concatenate(mus, axis=0)
 
-    model = TGVAE(input_dim)
+    model = TE-VAE(input_dim)
     model.build((None, input_dim))
     model.compile(optimizer="adam")
     return model
@@ -161,8 +161,8 @@ def main():
     val_x = normal_z[idx[split:]]
     print(f"  train: {len(train_x):,}  val: {len(val_x):,}")
 
-    print("\nBuilding TGVAE...")
-    model = build_tgvae(input_dim=normal_z.shape[1])
+    print("\nBuilding TE-VAE...")
+    model = build_tevae(input_dim=normal_z.shape[1])
     model.summary()
 
     print("\nTraining (classified only)...")
@@ -221,7 +221,7 @@ def main():
     meta = meta.copy()
     meta["recon_error"] = recon_error
     meta["latent_mahal"] = latent_mahal
-    meta["tgvae_error"] = hybrid_score   # keep the column name for downstream compat
+    meta["tevae_error"] = hybrid_score   # keep the column name for downstream compat
 
     # ── Threshold
     cl_scores = hybrid_score[classified_mask]
@@ -241,14 +241,14 @@ def main():
     print(f"  Classified flagged:     {n_cl_anom:,} ({100*n_cl_anom/n_cl_total:.3f}%)")
     print(f"  Unclassified flagged:   {n_ucl_anom:,} ({100*n_ucl_anom/n_ucl_total:.3f}%)")
 
-    out_path = RESULTS_DIR / "tgvae_scores.tsv"
-    meta.sort_values("tgvae_error", ascending=False).to_csv(
+    out_path = RESULTS_DIR / "tevae_scores.tsv"
+    meta.sort_values("tevae_error", ascending=False).to_csv(
         out_path, sep="\t", index=False
     )
     print(f"\nSaved: {out_path}")
 
-    with open(RESULTS_DIR / "tgvae_threshold.txt", "w") as f:
-        f.write(f"TGVAE hybrid anomaly score\n")
+    with open(RESULTS_DIR / "tevae_threshold.txt", "w") as f:
+        f.write(f"TE-VAE hybrid anomaly score\n")
         f.write("=" * 50 + "\n\n")
         f.write(f"Score = {W_RECON} * z(recon_error) + {W_LATENT} * z(latent_mahal)\n")
         f.write(f"Threshold: mean + {THRESHOLD_K} * std (on classified)\n")
@@ -261,9 +261,9 @@ def main():
     # ── Distribution plot
     fig, axes = plt.subplots(1, 3, figsize=(18, 5))
     components = [
-        ("recon_error", "Reconstruction error", "fig_tgvae_recon.png"),
-        ("latent_mahal", "Latent Mahalanobis", "fig_tgvae_latent.png"),
-        ("tgvae_error", "Hybrid score (z-recon + z-latent)", "fig_tgvae_hybrid.png"),
+        ("recon_error", "Reconstruction error", "fig_tevae_recon.png"),
+        ("latent_mahal", "Latent Mahalanobis", "fig_tevae_latent.png"),
+        ("tevae_error", "Hybrid score (z-recon + z-latent)", "fig_tevae_hybrid.png"),
     ]
 
     for ax, (col, title, _) in zip(axes, components):
@@ -273,7 +273,7 @@ def main():
                 color="#0D7377", density=True)
         ax.hist(ucl, bins=80, alpha=0.6, label=f"Unclassified (n={len(ucl):,})",
                 color="#C0392B", density=True)
-        if col == "tgvae_error":
+        if col == "tevae_error":
             ax.axvline(threshold, color="black", linestyle="--", linewidth=1.5,
                        label=f"Threshold = {threshold:.2f}")
         ax.set_xlabel(title)
@@ -281,30 +281,30 @@ def main():
         ax.set_title(title)
         ax.legend(fontsize=9)
 
-    plt.suptitle("TGVAE — three score components", fontsize=13)
+    plt.suptitle("TE-VAE — three score components", fontsize=13)
     plt.tight_layout()
-    plt.savefig(RESULTS_DIR / "fig_tgvae_distribution_components.png", dpi=150)
+    plt.savefig(RESULTS_DIR / "fig_tevae_distribution_components.png", dpi=150)
     plt.close()
-    print("  fig_tgvae_distribution_components.png")
+    print("  fig_tevae_distribution_components.png")
 
     # Single hybrid plot too (for the deck)
     fig, ax = plt.subplots(figsize=(9, 5))
-    cl = meta[meta["kind"] == "classified"]["tgvae_error"]
-    ucl = meta[meta["kind"] == "unclassified"]["tgvae_error"]
+    cl = meta[meta["kind"] == "classified"]["tevae_error"]
+    ucl = meta[meta["kind"] == "unclassified"]["tevae_error"]
     ax.hist(cl, bins=80, alpha=0.6, label=f"Classified (n={len(cl):,})",
             color="#0D7377", density=True)
     ax.hist(ucl, bins=80, alpha=0.6, label=f"Unclassified (n={len(ucl):,})",
             color="#C0392B", density=True)
     ax.axvline(threshold, color="black", linestyle="--", linewidth=1.5,
                label=f"Threshold (μ+{THRESHOLD_K}σ = {threshold:.2f})")
-    ax.set_xlabel("TGVAE hybrid anomaly score")
+    ax.set_xlabel("TE-VAE hybrid anomaly score")
     ax.set_ylabel("Density")
-    ax.set_title("TGVAE hybrid score: classified vs unclassified")
+    ax.set_title("TE-VAE hybrid score: classified vs unclassified")
     ax.legend()
     plt.tight_layout()
-    plt.savefig(RESULTS_DIR / "fig_tgvae_distribution.png", dpi=150)
+    plt.savefig(RESULTS_DIR / "fig_tevae_distribution.png", dpi=150)
     plt.close()
-    print("  fig_tgvae_distribution.png")
+    print("  fig_tevae_distribution.png")
 
     print("\nDone.")
     print(f"Results in {RESULTS_DIR}/")

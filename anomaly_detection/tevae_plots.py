@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-tgvae_plots.py
+tevae_plots.py
 
 Generate the 3 deck/report figures from TE-VAE scores:
-  1. fig_tgvae_score_distributions.png  - histogram per timepoint
-  2. fig_tgvae_cluster_trajectories.png - emerging clusters over time
-  3. fig_tgvae_joint_umap.png           - 3-panel joint UMAP
+  1. fig_tevae_score_distributions.png  - histogram per timepoint
+  2. fig_tevae_cluster_trajectories.png - emerging clusters over time
+  3. fig_tevae_joint_umap.png           - 3-panel joint UMAP
 
 Inputs:
-  results_tgvae/tgvae_scores.tsv       - per-read hybrid score (already produced)
+  results_tevae/tevae_scores.tsv       - per-read hybrid score (already produced)
   embeddings_combined/all.npy          - embeddings (for clustering + UMAP)
 
 Edit BASE_DIR below to match your machine.
@@ -28,7 +28,7 @@ import os
 PROJECT_ROOT = Path(os.environ.get("HYDRAWATCH_ROOT", "."))
 
 EMBED_DIR = PROJECT_ROOT / "casper_data/ny_hospital_d/embeddings/25k/embeddings_combined"
-RESULTS_DIR = PROJECT_ROOT / "results_tgvae"
+RESULTS_DIR = PROJECT_ROOT / "results_tevae"
 
 # ── Config
 ANOMALY_PERCENTILE = 99
@@ -55,7 +55,7 @@ plt.rcParams.update({
 
 def main():
     print("Loading TE-VAE scores + embeddings...")
-    scores = pd.read_csv(RESULTS_DIR / "tgvae_scores.tsv", sep="\t")
+    scores = pd.read_csv(RESULTS_DIR / "tevae_scores.tsv", sep="\t")
     all_emb = np.load(EMBED_DIR / "all.npy").astype(np.float32)
     meta = pd.read_csv(EMBED_DIR / "all_metadata.tsv", sep="\t")
     print(f"  scores: {len(scores):,}")
@@ -63,10 +63,10 @@ def main():
 
     # Re-attach scores to row-aligned meta
     meta = meta.merge(
-        scores[["read_id", "sample", "kind", "tgvae_error"]],
+        scores[["read_id", "sample", "kind", "tevae_error"]],
         on=["read_id", "sample", "kind"], how="left"
     )
-    assert meta["tgvae_error"].notna().all()
+    assert meta["tevae_error"].notna().all()
 
     ucl_mask = (meta["kind"] == "unclassified").values
     ucl_meta = meta[ucl_mask].copy().reset_index(drop=True)
@@ -82,7 +82,7 @@ def main():
     print("\nFig 1: distributions...")
     fig, ax = plt.subplots(figsize=(7, 4.2))
     for i, tp in enumerate(label_order):
-        data = ucl_meta[ucl_meta["timepoint"] == tp]["tgvae_error"]
+        data = ucl_meta[ucl_meta["timepoint"] == tp]["tevae_error"]
         acc = ucl_meta[ucl_meta["timepoint"] == tp]["sample"].iloc[0]
         ax.hist(data, bins=80, alpha=0.55, color=palette[i % len(palette)],
                 label=f"{tp} ({acc})", density=True,
@@ -94,15 +94,15 @@ def main():
     ax.grid(True, alpha=0.25, linewidth=0.5)
     ax.set_axisbelow(True)
     plt.tight_layout()
-    plt.savefig(RESULTS_DIR / "fig_tgvae_score_distributions.png", dpi=DPI)
+    plt.savefig(RESULTS_DIR / "fig_tevae_score_distributions.png", dpi=DPI)
     plt.close()
-    print("  fig_tgvae_score_distributions.png")
+    print("  fig_tevae_score_distributions.png")
 
     # ─────────────────────────────────────────────────────────────────────
     # Top 1% anomalies → cluster
     # ─────────────────────────────────────────────────────────────────────
-    threshold = np.percentile(ucl_meta["tgvae_error"].values, ANOMALY_PERCENTILE)
-    high_mask = ucl_meta["tgvae_error"].values >= threshold
+    threshold = np.percentile(ucl_meta["tevae_error"].values, ANOMALY_PERCENTILE)
+    high_mask = ucl_meta["tevae_error"].values >= threshold
     high_meta = ucl_meta[high_mask].copy().reset_index(drop=True)
     high_emb = ucl_emb[high_mask]
     print(f"\nTop 1% anomalies: {len(high_meta):,} reads (threshold {threshold:.4f})")
@@ -133,7 +133,7 @@ def main():
     traj = high_meta.groupby(["cluster", "timepoint"]).size().unstack(fill_value=0)
     traj = traj.reindex(columns=label_order, fill_value=0)
     traj["total"] = traj.sum(axis=1)
-    traj["mean_error"] = high_meta.groupby("cluster")["tgvae_error"].mean()
+    traj["mean_error"] = high_meta.groupby("cluster")["tevae_error"].mean()
     if len(label_order) >= 2:
         first, last = label_order[0], label_order[-1]
         traj["growth_ratio"] = (traj[last] + 1) / (traj[first] + 1)
@@ -142,9 +142,9 @@ def main():
         "growth_ratio" if "growth_ratio" in traj.columns else "total",
         ascending=False
     )
-    traj_clean.to_csv(RESULTS_DIR / "tgvae_cluster_trajectories.tsv", sep="\t")
-    high_meta.sort_values(["cluster", "tgvae_error"], ascending=[True, False]) \
-             .to_csv(RESULTS_DIR / "tgvae_top_anomalies_with_clusters.tsv",
+    traj_clean.to_csv(RESULTS_DIR / "tevae_cluster_trajectories.tsv", sep="\t")
+    high_meta.sort_values(["cluster", "tevae_error"], ascending=[True, False]) \
+             .to_csv(RESULTS_DIR / "tevae_top_anomalies_with_clusters.tsv",
                      sep="\t", index=False)
     print(f"  Saved cluster tables")
 
@@ -167,9 +167,9 @@ def main():
         ax.grid(True, alpha=0.25, linewidth=0.5)
         ax.set_axisbelow(True)
         plt.tight_layout()
-        plt.savefig(RESULTS_DIR / "fig_tgvae_cluster_trajectories.png", dpi=DPI)
+        plt.savefig(RESULTS_DIR / "fig_tevae_cluster_trajectories.png", dpi=DPI)
         plt.close()
-        print("  fig_tgvae_cluster_trajectories.png")
+        print("  fig_tevae_cluster_trajectories.png")
         print("\n  Top emerging clusters:")
         print(emerging[label_order + ["mean_error", "growth_ratio"]].to_string())
 
@@ -195,7 +195,7 @@ def main():
         for tp in label_order:
             tp_mask = (ucl_meta["timepoint"] == tp).values
             tp_emb = ucl_emb[tp_mask]
-            tp_scores = ucl_meta[tp_mask]["tgvae_error"].values
+            tp_scores = ucl_meta[tp_mask]["tevae_error"].values
             n = min(per_sample_n, len(tp_emb))
             idx = rng.choice(len(tp_emb), n, replace=False)
             pcs_list.append(tp_emb[idx])
@@ -257,9 +257,9 @@ def main():
         plt.suptitle(f"Joint UMAP — TE-VAE method — {len(combined):,} reads",
                      fontsize=13, y=1.02)
         plt.tight_layout()
-        plt.savefig(RESULTS_DIR / "fig_tgvae_joint_umap.png", dpi=DPI)
+        plt.savefig(RESULTS_DIR / "fig_tevae_joint_umap.png", dpi=DPI)
         plt.close()
-        print("  fig_tgvae_joint_umap.png")
+        print("  fig_tevae_joint_umap.png")
     except ImportError:
         print("  Skipping UMAP (pip install umap-learn)")
 

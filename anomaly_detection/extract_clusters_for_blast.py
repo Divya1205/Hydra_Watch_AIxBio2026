@@ -4,7 +4,7 @@ extract_clusters_for_blast.py
 
 Extract top sequences from priority clusters (6, 4, 3) for NCBI web BLAST.
 
-Run from the directory containing your FASTAs and results_tgvae/.
+Run from the directory containing your FASTAs and results_tevae/.
 
 Output: One FASTA file per cluster, ready to paste into web BLAST.
 
@@ -22,8 +22,8 @@ import os
 PROJECT_ROOT = Path(os.environ.get("HYDRAWATCH_ROOT", "."))
 
 EMBED_DIR = PROJECT_ROOT / "casper_data/ny_hospital_d/embeddings/25k/embeddings_combined"
-RESULTS_DIR = PROJECT_ROOT / "results_tgvae"
-CLUSTERS_TSV = RESULTS_DIR / "tgvae_top_anomalies_with_clusters.tsv"
+RESULTS_DIR = PROJECT_ROOT / "results_tevae"
+CLUSTERS_TSV = RESULTS_DIR / "tevae_top_anomalies_with_clusters.tsv"
 
 
 # Map sample accession → FASTA file with the actual sequences
@@ -81,9 +81,9 @@ def main():
             print(f"\nCluster {cluster_id}: NOT FOUND, skipping")
             continue
 
-        cdf = cdf.sort_values("tgvae_error", ascending=False).head(args.top_n)
+        cdf = cdf.sort_values("tevae_error", ascending=False).head(args.top_n)
         print(f"\nCluster {cluster_id}: {len(cdf)} top reads")
-        print(cdf[["sample", "timepoint", "read_id", "tgvae_error"]].to_string(index=False))
+        print(cdf[["sample", "timepoint", "read_id", "tevae_error"]].to_string(index=False))
 
         # Load needed FASTAs lazily
         records = []
@@ -103,7 +103,7 @@ def main():
                 print(f"  WARNING: {row['read_id']} not found in {sample} FASTA")
                 continue
 
-            header = f">{row['timepoint']}_cluster{cluster_id}_score{row['tgvae_error']:.1f}_{row['read_id']}"
+            header = f">{row['timepoint']}_cluster{cluster_id}_score{row['tevae_error']:.1f}_{row['read_id']}"
             records.append(f"{header}\n{seq}")
             combined_records.append(f"{header}\n{seq}")
 
