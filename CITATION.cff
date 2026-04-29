@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+title: "HydraWatch: Embedding-based wastewater pathogen surveillance for federated hospital networks"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - family-names: "Sitani"
+    given-names: "Divya"
+    affiliation: "Independent Researcher"
+  - family-names: "ElSayed"
+    given-names: "Mohammed"
+    affiliation: "Helmut Schmidt Universität Hamburg"
+  - family-names: "Arrey"
+    given-names: "Frida"
+    affiliation: "Independent Researcher"
+  - family-names: "Schutz"
+    given-names: "Hanna"
+    affiliation: "Oxford Nanopore Technologies"
+  - family-names: "Held"
+    given-names: "Sascha"
+    affiliation: "Swissbit AG"
+repository-code: "https://github.com/Divya1205/Hydra_Watch_AIxBio2026"
+abstract: >
+  HydraWatch is a reference-free, privacy-preserving wastewater pathogen
+  surveillance pipeline designed for federated hospital networks. Each
+  hospital sequences its own sewershed, embeds reads with DNABERT-2,
+  and trains a local Transformer-encoder Variational Autoencoder
+  (TE-VAE) on the classified read pool to define a site-normal
+  baseline. A hybrid anomaly score flags reads in the unclassified
+  pool, where novel pathogens hide because reference-based tools
+  cannot detect them. Cross-site detection happens by query, not data:
+  hospitals exchange ~3 KB cluster centroids, never raw reads or
+  read-level embeddings.
+keywords:
+  - wastewater-surveillance
+  - pathogen-detection
+  - anomaly-detection
+  - metagenomics
+  - dnabert
+  - variational-autoencoder
+  - federated-learning
+  - bioinformatics
+license: MIT
+date-released: 2026-04-27
+version: 1.0.0
