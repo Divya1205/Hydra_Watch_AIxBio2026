@@ -234,8 +234,3 @@ MIT — see [LICENSE](LICENSE).
 ## Acknowledgements
 
 Built on top of the SecureBio CASPER initiative dataset (PRJNA1247874). HydraWatch is complementary to, not a replacement for, reference-based wastewater surveillance. The two layers cover different failure modes.
-```
-
-
-
-That's the last README. Repo is fully documented end-to-end. Submit and rest.
