@@ -1,5 +1,5 @@
 ```markdown
-# Preprocessing Pipeline
+Preprocessing Pipeline
 
 End-to-end steps from raw SRA download to Kaggle-ready FASTAs.
 
