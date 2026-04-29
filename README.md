@@ -202,7 +202,7 @@ GitHub also generates BibTeX and APA citations from `CITATION.cff` — click "Ci
 
 | Author | Affiliation |
 |:--|:--|
-| Divya Sitani (lead) | Independent Researcher |
+| Divya Sitani | Independent Researcher |
 | Mohammed ElSayed | Helmut Schmidt Universität Hamburg |
 | Frida Arrey | Independent Researcher |
 | Hanna Schutz | Oxford Nanopore Technologies |
