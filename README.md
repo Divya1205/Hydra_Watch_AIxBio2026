@@ -19,6 +19,14 @@ Cross-site detection happens by query, not data: hospitals exchange ~3 KB cluste
 
 ---
 
+## System architecture
+
+![HydraWatch federated surveillance concept](submission/figures/figure1_architecture.png)
+
+*Five hospitals each run a local DNABERT-2 + TE-VAE pipeline on their own wastewater data. When a site detects an emerging anomaly cluster, it sends a single 768-dim centroid query (~3 KB) to peer sites — raw reads and read-level embeddings stay on-prem. The regional layer matches centroids across nearby hospitals; the national layer triggers public-health alerts when a cluster signature appears in more than one region. Hospital D is the pilot site analysed in this report.*
+
+---
+
 ## Headline result
 
 On a three-timepoint NY hospital sewershed pilot (CASPER PRJNA1247874, September–November 2025), joint HDBSCAN clustering surfaces a dominant emerging cluster:
