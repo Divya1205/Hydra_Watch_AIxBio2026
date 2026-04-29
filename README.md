@@ -174,11 +174,13 @@ Outputs land in `results_tevae/` (anomaly scores, cluster trajectories, figures,
 
 ## Citation
 
-If you use this work, please cite the project report:
+If you use this work, please cite it as:
 
-> Sitani D, ElSayed M, Arrey F, Schutz H, Held S. *HydraWatch: Embedding-based wastewater pathogen surveillance for federated hospital networks.* AIxBio Hackathon Track 2, Apart Research, April 2026.
+> Sitani D, ElSayed M, Arrey F, Schutz H, Held S. (2026). *HydraWatch: Embedding-based wastewater pathogen surveillance for federated hospital networks.* AIxBio Hackathon Track 2, Apart Research. https://github.com/Divya1205/Hydra_Watch_AIxBio2026
 
-Underlying dataset:
+GitHub also generates BibTeX and APA citations from `CITATION.cff` — click "Cite this repository" near the top of the repo page.
+
+**Underlying dataset:**
 
 > Justen LJ et al. (2026). *Deep untargeted wastewater metagenomic sequencing from sewersheds across the United States.* medRxiv 2026-03 (CASPER consortium). BioProject PRJNA1247874.
 
