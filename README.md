@@ -92,15 +92,19 @@ Hydra_Watch_AIxBio2026/
 │   └── extract_clusters_for_blast.py      ← BLAST FASTA extraction
 │
 ├── multi_view/                            ← §6.3: ESM-2 proof of concept
-│   └── README.md                          ← multi-view extension notes
+│   ├── README.md                          ← multi-view extension notes
+│   └── pandemic_plug_and_play.ipynb       ← DNA + protein dual-signal pipeline (SRR37006656)
 │
 ├── results/                               ← outputs (samples; full data on request)
 │   ├── tevae_cluster_trajectories.tsv
 │   ├── tevae_threshold.txt
 │   └── figures/
 │
-├── data/                                  ← documentation only; raw data not committed
-│   └── README.md                          ← how to download from SRA + Kaggle
+├── data/                                  ← reference files + SRA metadata (raw FASTQs not committed)
+│   ├── README.md                          ← how to download from SRA + Kaggle
+│   ├── SraRunTable.csv                    ← BioSample metadata for the four CASPER accessions
+│   ├── pathogens_CASPER.txt               ← CASPER pathogen reference list (BLAST validation)
+│   └── pathogen_protein_domains_conservation.txt  ← protein domain conservation reference
 │
 └── submission/                            ← final hackathon deliverables
     ├── HydraWatch_report.pdf
