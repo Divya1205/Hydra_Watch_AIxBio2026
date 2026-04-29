@@ -1,0 +1,111 @@
+PATHOGENS DETECTED IN WASTEWATER - CASPER STUDY
+================================================
+Source: "Deep untargeted wastewater metagenomic sequencing from sewersheds across the United States"
+medRxiv preprint, March 2026
+
+
+RESPIRATORY VIRUSES
+-------------------
+- SARS-CoV-2
+  Subtype analysis: Yes, via Freyja (lineage deconvolution, PANGO nomenclature)
+  Notes: Multiple Omicron subvariants tracked over time; new variants detected in wastewater earlier than in clinical reports
+
+- Influenza A
+  Subtype analysis: Yes, including seasonal subtypes (H1N1, H3N2) and highly pathogenic avian influenza H5N1
+  Notes: H5N1 detected independently of clinical case reports; phylogenetically linked to North American outbreak strains
+
+- Influenza B
+  Subtype analysis: No
+  Notes: Detected at species level only
+
+- RSV (Respiratory Syncytial Virus)
+  Subtype analysis: No
+  Notes: Strong correlation with clinical testing data (R up to 0.92)
+
+- Human Coronavirus HCoV-HKU1
+  Subtype analysis: No
+  Notes: Detected at species level; clear seasonal patterns observed
+
+- Human Coronavirus HCoV-NL63
+  Subtype analysis: No
+  Notes: Detected at species level; clear seasonal patterns observed
+
+- Human Coronavirus HCoV-229E
+  Subtype analysis: No
+  Notes: Detected at species level; clear seasonal patterns observed
+
+- Human Coronavirus HCoV-OC43
+  Subtype analysis: No
+  Notes: Detected at species level; clear seasonal patterns observed
+
+- Parainfluenza 2
+  Subtype analysis: No
+  Notes: Detected at species level
+
+- Parainfluenza 3
+  Subtype analysis: No
+  Notes: Detected at species level
+
+- Human Metapneumovirus
+  Subtype analysis: No
+  Notes: Detected at species level
+
+
+GASTROINTESTINAL VIRUSES
+------------------------
+- Norovirus
+  Subtype analysis: No
+  Notes: Detected at species level; part of Caliciviridae family
+
+- Rotavirus
+  Subtype analysis: No
+  Notes: Detected at species level; part of Sedoreoviridae family
+
+- Astrovirus
+  Subtype analysis: No
+  Notes: Detected at species level; part of Astroviridae family
+
+- Sapovirus
+  Subtype analysis: No
+  Notes: Detected at species level; part of Caliciviridae family
+
+- Enterovirus D68
+  Subtype analysis: No
+  Notes: Detected at species level
+
+
+RARE / UNEXPECTED PATHOGENS
+----------------------------
+- West Nile Virus
+  Subtype analysis: No
+  Notes: Detected independently of clinical case reports; demonstrates pathogen-agnostic surveillance value
+
+- Measles Virus
+  Subtype analysis: No
+  Notes: Detected independently of clinical case reports; demonstrates pathogen-agnostic surveillance value
+
+- Avian Influenza H5N1 (highly pathogenic)
+  Subtype analysis: Yes, via HA and NA segment analysis and phylogenetic classification
+  Notes: Detected without prior hypothesis; phylogenetically linked to North American avian outbreak strains;
+         broader geographic spread suggested than captured by clinical surveillance
+
+
+VIRUS FAMILIES (aggregate level only, no species resolution)
+-------------------------------------------------------------
+- Sedoreoviridae
+- Astroviridae
+- Caliciviridae
+- Picornaviridae
+- Tobaniviridae
+- Picobirnaviridae
+- Coronaviridae
+- Retroviridae
+- Genomoviridae
+
+
+NORMALIZATION & QUALITY CONTROL
+--------------------------------
+- All pathogen abundances normalized to Pepper Mild Mottle Virus (PMMoV),
+  a plant virus consistently present in human fecal matter
+- Abundances expressed as fold change relative to site-specific median
+- rRNA fraction used as sequencing quality control metric

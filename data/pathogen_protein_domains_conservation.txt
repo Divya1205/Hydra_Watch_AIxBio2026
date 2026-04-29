@@ -1,0 +1,300 @@
+PATHOGENICITY-RELEVANT PROTEIN DOMAINS AND CONSERVATION ANALYSIS
+=================================================================
+Source: Based on CASPER study (medRxiv preprint, March 2026) and current scientific literature
+Focus: Group A pathogens - highest pathogenicity (H5N1, SARS-CoV-2, Measles Virus, West Nile Virus)
+
+
+NOTE ON PAPER CONTEXT
+---------------------
+The CASPER paper itself does not discuss protein domains or conservation degrees in detail.
+H5N1 and SARS-CoV-2 are phylogenetically classified and analyzed at subtype level,
+but no domain-specific pathogenicity discussion is provided. The following is based on
+current scientific background knowledge from peer-reviewed literature.
+
+
+================================================================================
+1. H5N1 INFLUENZA A (RNA VIRUS, NEGATIVE-SENSE)
+================================================================================
+
+PATHOGENICITY-RELEVANT PROTEIN DOMAINS
+---------------------------------------
+
+a) Hemagglutinin (HA) - Receptor Binding Domain
+   - Primary determinant of host range and cross-species transmissibility
+   - Key mutations: Q226L, G228S, T199I
+   - These mutations increase affinity for human-type (alpha-2,6-linked sialic acid) receptors
+   - Avian strains preferentially bind alpha-2,3-linked sialic acid receptors
+   - Single amino acid changes can dramatically shift receptor specificity
+
+b) PB2 Polymerase Subunit - 627 Domain
+   - Most critical pathogenicity determinant for mammalian adaptation
+   - Key mutation: E627K (glutamate to lysine at position 627)
+     → Primary factor for enhanced polymerase activity in human cells
+     → Identified in first human H5N1 isolate from US dairy worker (Texas, April 2024)
+   - Additional key mutation: D701N
+     → Mammalian adaptation marker; absence associated with low pathogenicity
+   - Both E627K and D701N serve as markers for mammalian adaptation
+
+c) PB2 - Additional Critical Positions
+   - M631L mutation: enhances polymerase activity in mammalian cells
+     → Previously co-occurred in H5N1 outbreaks in Cambodia/Vietnam 2013-2014
+     → Present in >99% of bovine H5N1 sequences from 2024-2025
+   - E362G: contributes to enhanced polymerase activity (lesser extent than E627K)
+   - S181 phosphorylation site: highly conserved across IAV strains, restricts virulence
+   - K187 acetylation site: conserved, influences viral fitness
+
+d) Nucleoprotein (NP)
+   - Key mutations: PB2-478I and NP-450N
+   - Associated with enhanced immune cell tropism and systemic pathogenicity
+   - Enable viral dissemination via immune cells (neuroinvasion)
+   - Found in 95-97% of recent mammalian and human H5N1 isolates
+
+e) PB1-F2 Accessory Protein
+   - Contributes to pathogenicity via mitochondrial membrane disruption
+   - Promotes apoptosis in immune cells
+   - Variable across strains; N66S mutation associated with increased virulence
+
+f) Neuraminidase (NA)
+   - Key mutations for drug resistance: H274Y (oseltamivir resistance), S137A, I222V
+   - Functional cleavage of sialic acid essential for viral release from cells
+
+CONSERVATION DEGREES
+--------------------
+Within H5N1 strains:
+  - HA receptor binding domain: functionally conserved but harbors critical point mutations
+    that determine host tropism (high variability at key positions)
+  - PB2 core structure: highly conserved; adaptation mutations (E627K, D701N) strain-specific
+  - NP: relatively conserved core; pathogenicity mutations accumulated in mammalian lineages
+
+Between Influenza A subtypes:
+  - PB2 basic structure: highly conserved across all IAV subtypes
+  - HA head domain: highly variable (basis for H1-H18 subtype classification)
+  - Polymerase complex (PB1, PB2, PA): structurally conserved, functionally essential motifs
+
+
+================================================================================
+2. SARS-CoV-2 (RNA VIRUS, POSITIVE-SENSE)
+================================================================================
+
+PATHOGENICITY-RELEVANT PROTEIN DOMAINS
+---------------------------------------
+
+a) Spike Protein - Receptor Binding Domain (RBD)
+   - Binds human ACE2 receptor; primary determinant of infectivity
+   - Mutations in RBD residues increase binding affinity to ACE2
+   - Key stabilizing mutations (Omicron): G339D, S371L, N440K, S477N, T478K,
+     E484A, Q493R, Q498R, Y505H
+   - D614G mutation: became dominant early in pandemic; enhances spike trimer
+     stability and viral infectivity
+
+b) Spike S1/S2 Cleavage Site - Furin Binding Site
+   - Polybasic furin cleavage site: unique to SARS-CoV-2 among SARS-related coronaviruses
+   - Enables efficient cleavage by host furin protease → enhanced cell entry
+   - P681R mutation (Delta): increases fusogenicity → higher pathogenicity
+   - Q677H mutation: located in polybasic region, influences S1/S2 cleavage
+
+c) Spike S2 Subunit - Fusion Machinery
+   - Mediates fusion of viral envelope with host cell membrane
+   - Contains: fusion peptide (FP), heptad repeat regions (HR1, HR2),
+     central helix (CH), connector domain (CD)
+   - Less mutation-prone than S1 → more stable therapeutic target
+   - Hinge regions in stalk: highly conserved among SARS coronaviruses
+
+d) RdRp Complex (NSP12/NSP7/NSP8) - RNA Replication
+   - NSP12: catalytic subunit; contains NiRAN domain, interface domain, RdRp domain
+   - P323L mutation in NSP12: highly conserved across all five VOCs
+     → Stabilizes NSP12-NSP7-NSP8 complex; enhances RdRp activity
+   - NSP7/NSP8: accessory factors enhancing template binding and processivity
+   - Conserved polymerase motifs A, B, F, G: essential for RNA synthesis
+
+e) Non-Structural Proteins (Accessory Pathogenicity Factors)
+   - NSP3 + NSP4 + NSP6: biogenesis of replication organelle
+   - NSP6 + ORF7a: ubiquitination promotes NF-κB pathway activation (inflammation)
+   - NSP12 P323L/G671S: stabilize replication complex across VOCs
+
+f) Nucleocapsid Protein (N)
+   - RNA encapsidation; involved in immune evasion
+   - Multiple variants carry mutations that affect innate immune response modulation
+
+CONSERVATION DEGREES
+--------------------
+Within SARS-CoV-2 variants:
+  - RdRp (NSP12) core domains: very highly conserved across all variants
+  - Spike RBD: highly variable (immune evasion driver; basis for variant classification)
+  - S2 fusion domain: relatively conserved compared to S1
+  - P323L in NSP12: conserved across all VOCs (Alpha, Beta, Delta, Omicron, etc.)
+
+Between Betacoronaviruses:
+  - S2 fusion domain and RdRp core motifs: conserved
+  - S1/RBD: considerably divergent between SARS-CoV, SARS-CoV-2, MERS-CoV
+  - Six conserved structural proteins (pp1a, pp1ab, S, E, M, N): present across coronaviruses
+
+
+================================================================================
+3. MEASLES VIRUS (RNA VIRUS, NEGATIVE-SENSE)
+================================================================================
+
+PATHOGENICITY-RELEVANT PROTEIN DOMAINS
+---------------------------------------
+
+a) Hemagglutinin (H Protein) - Receptor Binding Site
+   - Binds two principal cellular receptors:
+     → SLAM (CD150/Signaling Lymphocyte Activation Molecule): on immune cells
+     → Nectin-4: at adherens junctions of epithelial cells
+   - Receptor binding site itself forms a conserved neutralizing epitope (CNE)
+   - Because receptor binding is essential for pathogenesis, viral escape from
+     neutralization cannot occur without loss of receptor-binding activity
+   - H protein determines viral tropism
+
+b) H Protein Stalk - Fusion Activation Domain
+   - 96-residue stalk transmits receptor-binding signal to F protein
+   - Residues 86-109: highly conserved among morbilliviruses; central signal
+     transmission region
+   - HR-like domain (I84-L105): contains completely conserved proline at position 94
+     and conserved leucine at position 95 across paramyxoviruses
+   - Heptadic residues (I84, V91, I98, L105): mutations here severely reduce fusion activity
+   - The stalk, not the globular head, is the effector domain for F protein triggering
+
+c) Fusion Protein (F Protein) - Membrane Fusion
+   - Mediates virion-to-cell and cell-to-cell membrane fusion
+   - Produced as non-functional precursor, cleaved by furin protease into F1 and F2
+   - Prefusion conformation is metastable; destabilization → hyperfusogenic phenotype
+   - L454W mutation in F protein: enables fusion without H protein → neuroinvasion
+     (found in patients with SSPE/MIBE - fatal CNS complications)
+   - Inhibitor binding site: hydrophobic pocket connecting head and stalk regions
+   - F protein is the target for fusion inhibitor drug development
+
+d) Nucleocapsid Protein (N)
+   - Large conserved core domain: supports self-assembly and RNA binding
+   - Hypervariable C-terminal tail: intrinsically disordered; required for RNA synthesis
+   - N protein is tightly associated with genomic RNA
+
+e) Phosphoprotein (P) and V/C Proteins
+   - P protein: essential polymerase cofactor; C-terminal half most conserved
+   - Contains polymerase-binding region and RNP-binding sequences
+   - V protein: IFN antagonist; zinc-binding C-terminal domain
+   - C protein: modulates immune evasion and pathogenicity
+
+CONSERVATION DEGREES
+--------------------
+Within measles virus strains:
+  - F protein: highly conserved; major variations only at positions 451, 467, 471
+  - H protein head domain: more variable (basis for 24 genotype classification)
+  - H stalk (residues 86-109): very highly conserved among morbilliviruses
+  - N protein core domain: highly conserved
+
+Between morbilliviruses (MeV, CDV, RPV, PPRV):
+  - F protein: highly conserved across all morbilliviruses
+  - Key structural features of H stalk: conserved (4-helix bundle organization)
+  - Central elements of F-triggering machinery: highly conserved within paramyxovirus family
+
+
+================================================================================
+4. WEST NILE VIRUS (RNA VIRUS, POSITIVE-SENSE)
+================================================================================
+
+PATHOGENICITY-RELEVANT PROTEIN DOMAINS
+---------------------------------------
+
+a) Envelope Protein (E) - Host Cell Entry
+   - Three structural domains: DI (central), DII (dimerization/fusion loop), DIII (receptor binding)
+   - Domain III (DIII): primary determinant of receptor binding and neuroinvasiveness
+   - N-Y-S glycosylation motif in E protein: associated with increased pathogenicity;
+     present in all Australian isolates since the 1980s
+   - Amino acid at position 156: involved in plaque size, growth, and pathogenicity
+   - Domain II fusion loop: highly conserved across flaviviruses; mediates membrane fusion
+
+b) NS1 Protein
+   - Secreted and membrane-associated forms
+   - Key role in immune evasion and complement modulation
+   - NS1-175 and NS1-130: associated with virulence differences between strains
+
+c) NS3 - Protease and Helicase Domain
+   - Dual enzymatic function:
+     → Protease domain (N-terminal): processes viral polyprotein (with NS2B cofactor)
+     → Helicase domain (C-terminal): unwinds dsRNA replication intermediate
+   - Seven NS3 residues identified as critical for viral replication; well conserved
+     among mosquito-borne flaviviruses
+   - Less efficient NS3 cleavage → delayed virus assembly → more time for immune clearance
+   - NS3-NS5 protein-protein interaction surface: potential drug target
+
+d) NS4B
+   - Component of the viral replicase complex
+   - A79T mutation: alters hydrophobicity → structural/functional implications for
+     virulence differences between strains
+   - NS4A/NS4B: membrane rearrangements for replication complex formation
+
+e) NS5 - RNA-Dependent RNA Polymerase and Methyltransferase
+   - Most variable protein among WNV strains of differing virulence
+   - Contains RNA-dependent RNA polymerase (RdRp) domain: functionally essential,
+     conserved core motifs
+   - N-terminal methyltransferase domain: involved in 5' cap synthesis
+   - Phenylalanine at position 653: present in all virulent isolates; associated with
+     pathogenicity
+   - NS5-V258A, NS5-N280K, NS5-A372V, NS5-R422K: associated with attenuated phenotypes
+
+CONSERVATION DEGREES
+--------------------
+Within WNV lineages:
+  - E protein domain II fusion loop: highly conserved
+  - E protein domain III: moderately conserved; key pathogenicity determinants variable
+  - NS3 protease/helicase core: structurally conserved; virulence differences via
+    specific point mutations
+  - NS5 polymerase: most variable protein; conserved catalytic core motifs
+
+Between flaviviruses (WNV, DENV, Zika, JEV):
+  - NS3 residues critical for replication: well conserved among mosquito-borne flaviviruses
+  - Pan-WNV sequences show partial overlap with dengue virus sequences (3-100%)
+    → variable but sometimes significant cross-reactivity between flaviviruses
+  - E protein overall structure: conserved three-domain architecture; DII fusion loop
+    highly conserved across genus Flavivirus
+
+
+================================================================================
+COMPARATIVE SUMMARY TABLE
+================================================================================
+
+Virus          | Most Variable Region          | Highly Conserved Region
+---------------|-------------------------------|----------------------------------
+H5N1           | HA receptor binding domain    | PB2 core structure, NP core
+SARS-CoV-2     | Spike RBD                     | RdRp (NSP12), S2 fusion domain
+Measles Virus  | H protein head domain         | F protein, H stalk (res. 86-109)
+West Nile Virus| NS5 polymerase (overall)      | NS3 protease/helicase, E-DIII
+
+
+================================================================================
+KEY BIOLOGICAL INSIGHT
+================================================================================
+
+A common pattern emerges across all four viruses:
+
+VARIABLE REGIONS (receptor binding domains):
+  → Subject to immune evasion pressure
+  → Enable host range expansion / cross-species transmission
+  → Drive variant/strain diversification
+
+CONSERVED REGIONS (replication machinery, fusion proteins):
+  → Functionally essential; mutations here often lethal for virus
+  → Less immune pressure → maintained across strains
+  → Prime targets for broad-spectrum antiviral drug development
+
+This pattern is directly relevant for surveillance strategies like CASPER:
+Deep metagenomic sequencing can detect both variable regions (for strain typing)
+and conserved regions (for pathogen identification), making the untargeted
+approach superior to PCR-based methods that target only pre-defined sequences.
+
+
+================================================================================
+KEY REFERENCES
+================================================================================
+- Mostafa et al. (2025): PB2 mutations in H5N1 (Texas human/bovine isolates)
+- Bayoumi et al. (2025): Emerging Microbes & Infections - PB2 E627K
+- Nature Comms (2025): PB2 M631L in mammalian H5N1 adaptation
+- Science Advances (2025): PB2-478I and NP-450N in North American H5N1
+- ScienceDirect (2025): SARS-CoV-2 spike protein pathogenic mechanisms
+- PNAS (2020): Genomic determinants of pathogenicity in human coronaviruses
+- Journal of Virology (2025): SARS-CoV-2 virulence factors comprehensive review
+- PMC (2013): Measles virus receptor-binding site as conserved neutralizing epitope
+- PNAS (2018): Prefusion measles F protein structures and neurovirulence
+- PMC (2024): NS3-NS5 interaction in West Nile virus; conserved replication residues
+- CDC EID (2008): Genetic determinants of virulence in lineage 2 WNV strains
